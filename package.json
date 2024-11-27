@@ -1,0 +1,35 @@
+{
+  "name": "vite-vuefinal",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "deploy": "vite build && gh-pages -d dist",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@vee-validate/rules": "^4.14.7",
+    "animate.css": "^4.1.1",
+    "axios": "^1.7.7",
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
+    "font-awesome": "^4.7.0",
+    "mitt": "^3.0.1",
+    "process": "^0.11.10",
+    "sweetalert2": "^11.6.13",
+    "swiper": "^11.1.14",
+    "vee-validate": "^4.14.7",
+    "vue": "^3.5.10",
+    "vue-axios": "^3.5.2",
+    "vue-router": "^4.4.5",
+    "vue3-loading-overlay": "^0.0.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.1.4",
+    "gh-pages": "^6.2.0",
+    "sass-embedded": "^1.79.5",
+    "vite": "^5.4.8"
+  }
+}
