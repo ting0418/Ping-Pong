@@ -1,15 +1,15 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 const routes = [
   {
-    path: "/pingPong/", // 注意這裡的 base 路徑
+    path: "/", // 注意這裡的 base 路徑
     component: () => import("../pages/home.vue"),
   },
   {
-    path: "/pingPong/login",
+    path: "/login",
     component: () => import("../pages/login.vue"),
   },
   {
-    path: "/pingPong/dashboard",
+    path: "/dashboard",
     component: () => import("../pages/dashboard.vue"),
     children: [
       { path: "products", component: () => import("../pages/products.vue") },
@@ -18,7 +18,7 @@ const routes = [
     ],
   },
   {
-    path: "/pingPong/user",
+    path: "/user",
     component: () => import("../pages/user.vue"),
     children: [
       {
