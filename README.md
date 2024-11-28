@@ -1,4 +1,23 @@
 # Ping Pong
 
-環境: vue: "^3.5.10",    
-使用套件:vee-validate,axios,sweetalert,bootstrap-icons,vue3-loading-overlay,swiper  
+環境: vue: "^3.5.10",  
+
+使用套件:vee-validate,axios,sweetalert,bootstrap-icons,vue3-loading-overlay,swiper  　　
+
+## 主要功能　
+
+消費者：　　
+
+1. 商品頁面瀏覽
+2. 可點選商品進入細節頁
+3. 購買喜歡的商品
+4. 可將喜歡的商品加入我的最愛
+5. 可在主頁輸入email獲取優惠碼，並且在結帳時套用優惠券享有折扣
+
+
+管理者：　　
+
+1. 填寫email及password進入管理者頁面
+2. 瀏覽所有產品列表，並且可以有新增修改及刪除的權限
+3. 瀏覽所有訂單列表，並且可以有修改及刪除的權限
+4. 瀏覽所有優惠券列表，並且可以有新增修改及刪除的權限，可設定優惠券到期日，如過期優惠券及失效 消費者將無法使用
