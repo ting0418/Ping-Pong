@@ -1,9 +1,14 @@
 <template>
   <div class="container">
-    <Loading :active="isLoading"></Loading>
+    <Loading
+      :active="isLoading"
+      width="2000"
+      loader="bars"
+      color="#e9e9d7"
+    ></Loading>
     <h2 class="mt-2 text-center">購物車清單</h2>
     <hr />
-    <div class="row justify-content-center">
+    <div v-if="this.cartLists.carts.length" class="row justify-content-center">
       <div class="col-md-9">
         <div class="container mb-3">
           <div class="row justify-content-between">
@@ -26,7 +31,7 @@
         </div>
       </div>
     </div>
-    <div class="table-responsive">
+    <div v-if="this.cartLists.carts.length" class="table-responsive">
       <table class="table table-striped table-success bg-color">
         <thead>
           <tr>
@@ -100,7 +105,7 @@
     <h5 v-if="this.cartLists.carts.length" class="text-end">
       總計:{{ totalAmount }}
     </h5>
-    <hr />
+    <hr v-if="this.cartLists.carts.length" />
     <h5 class="text-end text-success" v-if="this.finalTotal">
       折扣價:{{ this.finalTotal }}
     </h5>

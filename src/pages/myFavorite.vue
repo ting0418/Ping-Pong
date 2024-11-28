@@ -1,5 +1,10 @@
 <template>
-  <Loading :active="isLoading"></Loading>
+  <Loading
+    :active="isLoading"
+    width="2000"
+    loader="bars"
+    color="#e9e9d7"
+  ></Loading>
   <div class="container">
     <h2 class="text-center fw-bold mt-3">我的最愛</h2>
     <hr />

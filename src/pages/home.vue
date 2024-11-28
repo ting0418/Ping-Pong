@@ -1,5 +1,10 @@
 <template>
-  <Loading :active="isLoading"></Loading>
+  <Loading
+    :active="isLoading"
+    width="2000"
+    loader="bars"
+    color="#e9e9d7"
+  ></Loading>
   <nav class="px-5 navbar navbar-expand-lg navbar-light nav-bg">
     <div class="container-fluid">
       <router-link

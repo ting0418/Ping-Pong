@@ -1,6 +1,11 @@
 <template>
   <div class="container">
-    <Loading :active="isLoading"></Loading>
+    <Loading
+      :active="isLoading"
+      width="2000"
+      loader="bars"
+      color="#e9e9d7"
+    ></Loading>
     <Swiper class="my-5" />
 
     <div class="d-flex justify-content-center align-items-center mt-5">

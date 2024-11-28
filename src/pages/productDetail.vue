@@ -1,5 +1,10 @@
 <template>
-  <Loading :active="isLoading"></Loading>
+  <Loading
+    :active="isLoading"
+    width="2000"
+    loader="bars"
+    color="#e9e9d7"
+  ></Loading>
   <div class="container mt-5 d-flex justify-content-center">
     <div class="d-flex flex-column flex-md-row">
       <img :src="product.imageUrl" class="product-image" alt="商品圖片" />
