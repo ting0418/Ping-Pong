@@ -40,8 +40,7 @@
     </div>
   </div>
 </template>
-  <script >
-</script>
+  
   <style scoped>
 .card {
   border-radius: 15px; /* 調整圓角 */

@@ -49,7 +49,7 @@ footer {
 .marquee-text {
   display: inline-block;
   padding-left: 100%;
-  animation: marquee 100s linear infinite;
+  animation: marquee 30s linear infinite;
 }
 
 @keyframes marquee {

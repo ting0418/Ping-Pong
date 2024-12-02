@@ -1,10 +1,5 @@
 <template>
-  <Loading
-    :active="isLoading"
-    width="2000"
-    loader="bars"
-    color="#e9e9d7"
-  ></Loading>
+  <Loading :active="isLoading" loader="bars" color="#e9e9d7"></Loading>
   <div class="container">
     <h2 class="text-center fw-bold mt-3">我的最愛</h2>
     <hr />
@@ -37,7 +32,7 @@
                 <i class="bi bi-cart fs-3"></i>
               </button>
               <button
-                class="btn custom-button bg-light rounded-3"
+                class="btn bg-light rounded-3"
                 @click="toggleFavorite(product.id)"
               >
                 <i

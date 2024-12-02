@@ -1,5 +1,5 @@
 <template>
-  <hr class="mt-0" />
+  <hr class="my-0" />
   <div class="footer-back mb-4">
     <div class="d-flex justify-content-center">
       <i class="bi bi-instagram p-3 fs-3"></i>
@@ -15,6 +15,7 @@
     <p class="text-center my-1">營業時間:周一至周五 上午9:00至下午4:00</p>
     <p class="text-center my-1">連絡電話:0911111111</p>
     <p class="text-center my-1">營業地址:新北市板橋區成功路xxx號</p>
+    <p class="text-center">本網站僅供個人作品使用，無任何商業用途</p>
 
     <!-- 回到頁面頂部的按鈕 -->
     <button class="back-to-top" @click="scrollToTop">
@@ -38,7 +39,7 @@ export default {
 
 <style>
 .footer-back {
-  height: 200px;
+  height: 220px;
   background: #e9e9d7;
   position: relative; /* 相對定位以便將按鈕定位到右下角 */
 }

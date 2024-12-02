@@ -1,10 +1,5 @@
 <template>
-  <Loading
-    :active="isLoading"
-    width="2000"
-    loader="bars"
-    color="#e9e9d7"
-  ></Loading>
+  <Loading :active="isLoading" loader="bars" color="#e9e9d7"></Loading>
   <nav class="px-5 navbar navbar-expand-lg navbar-light nav-bg">
     <div class="container-fluid">
       <router-link
@@ -71,7 +66,7 @@
       </div>
     </div>
   </nav>
-  <!-- 圖片區域 -->
+
   <div style="position: relative">
     <img
       src="/image/2.webp"
@@ -103,7 +98,7 @@
     <div class="my-5">
       <h3 class="fw-bold text-center">精選商品</h3>
 
-      <!-- Swiper 區域 -->
+      <!-- Swiper  -->
       <div class="swiper">
         <div class="swiper-wrapper">
           <div
@@ -203,6 +198,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import Swiper from "swiper/bundle";
 import "swiper/swiper-bundle.css";
+import emitter from "../methods/emitter";
 export default {
   data() {
     return {
@@ -258,7 +254,8 @@ export default {
         console.error("無法獲取產品資料", error);
       }
     },
-    goProduct() {
+    goProduct(categoryTitle) {
+      emitter.emit("updateCategory", categoryTitle);
       this.$router.push("/user/product");
     },
     goProductDetail(id) {

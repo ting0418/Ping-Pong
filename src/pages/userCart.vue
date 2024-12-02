@@ -1,11 +1,6 @@
 <template>
   <div class="container">
-    <Loading
-      :active="isLoading"
-      width="2000"
-      loader="bars"
-      color="#e9e9d7"
-    ></Loading>
+    <Loading :active="isLoading" loader="bars" color="#e9e9d7"></Loading>
     <h2 class="mt-2 text-center">購物車清單</h2>
     <hr />
     <div v-if="this.cartLists.carts.length" class="row justify-content-center">

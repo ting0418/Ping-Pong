@@ -1,11 +1,6 @@
 <template>
   <div class="container">
-    <Loading
-      :active="isLoading"
-      width="2000"
-      loader="bars"
-      color="#e9e9d7"
-    ></Loading>
+    <Loading :active="isLoading" loader="bars" color="#e9e9d7"></Loading>
     <Swiper class="my-5" />
 
     <div class="d-flex justify-content-center align-items-center mt-5">
@@ -35,7 +30,7 @@
               </button>
 
               <div class="card-body">
-                <h5 class="card-title">{{ item.title }}</h5>
+                <h5 class="card-title fw-bolder">{{ item.title }}</h5>
                 <span class="border border-warning rounded-3 px-1">{{
                   item.category
                 }}</span>
@@ -45,7 +40,7 @@
                     <i class="bi bi-cart fs-3" @click="addToCart(item.id)"></i>
                   </button>
                   <button
-                    class="btn custom-button bg-light rounded-3"
+                    class="btn bg-light rounded-3"
                     @click="toggleFavorite(item)"
                   >
                     <i
@@ -234,10 +229,6 @@ export default {
 </script>
 
 <style scoped>
-.custom-button:active {
-  background-color: #3caa5d;
-  color: white;
-}
 .bg-color {
   background: #e9e9d7;
 }

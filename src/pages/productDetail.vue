@@ -1,14 +1,9 @@
 <template>
-  <Loading
-    :active="isLoading"
-    width="2000"
-    loader="bars"
-    color="#e9e9d7"
-  ></Loading>
+  <Loading :active="isLoading" loader="bars" color="#e9e9d7"></Loading>
   <div class="container mt-5 d-flex justify-content-center">
     <div class="d-flex flex-column flex-md-row">
-      <img :src="product.imageUrl" class="product-image" alt="商品圖片" />
-      <div class="product-details ms-md-5 mt-3 mt-md-0">
+      <img :src="product.imageUrl" class="product-image me-5" alt="商品圖片" />
+      <div class="product-details ms-md-2 mt-3 mt-md-0">
         <h1 class="product-title mb-3 fw-bold">
           {{ product.title }}
         </h1>
@@ -62,33 +57,36 @@
   <div class="container">
     <hr />
     <h2 class="fw-bold my-3">商品規格</h2>
-    <h5>{{ product.content }}</h5>
+    <!-- <h5>{{ product.content }}</h5> -->
+    <ol>
+      <li v-for="(item, index) in newContent" :key="index">
+        <p>{{ item }}</p>
+      </li>
+    </ol>
     <h2 class="fw-bold my-3">購物須知</h2>
     <ol>
       <li>
-        <h5>
+        <p>
           商品圖片為實物拍攝，因拍攝光線、顯示器差異等因素，商品圖片可能會與實際商品略有不同，實際顏色以收到商品為準。
-        </h5>
+        </p>
       </li>
       <li>
-        <h5>
+        <p>
           訂單確認後，商品將於1-3個工作天內處理並安排出貨。若遇上假日或特殊情況（如節慶促銷），處理時間可能會稍有延遲。
-        </h5>
+        </p>
       </li>
       <li>
-        <h5>
-          商品尺寸為手工測量，可能有±2公分的誤差，請確認所需尺寸後再下單。
-        </h5>
+        <p>商品尺寸為手工測量，可能有±2公分的誤差，請確認所需尺寸後再下單。</p>
       </li>
       <li>
-        <h5>
+        <p>
           消費滿一定金額可享免運優惠，未達標準之訂單則需支付相應運費，具體標準請參考網站配送政策。
-        </h5>
+        </p>
       </li>
       <li>
-        <h5>
+        <p>
           我們提供完整的售後服務，若在商品使用過程中遇到任何問題，歡迎隨時聯繫客服，我們將盡力協助解決。
-        </h5>
+        </p>
       </li>
     </ol>
   </div>
@@ -100,9 +98,10 @@ import axios from "axios";
 export default {
   data() {
     return {
+      newContent: [],
       quantity: 1,
       product: {},
-      isLoading: true,
+      isLoading: false,
       cartAdded: false,
     };
   },
@@ -139,40 +138,59 @@ export default {
   },
 
   mounted() {
+    this.isLoading = true;
     const id = this.$route.params.ProductId;
+
     const api = `${import.meta.env.VITE_API}api/${
       import.meta.env.VITE_PATH
     }/product/${id}`;
     axios.get(api).then((res) => {
       this.isLoading = false;
       this.product = res.data.product;
+      this.newContent = this.product.content.split(",");
+      console.log(this.newContent);
     });
   },
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .product-image {
-  width: 100%;
-  max-height: 500px;
-  max-width: 500px;
+  max-width: 100%;
+  height: auto;
+  max-height: 400px;
   border-radius: 8px;
   border: 2px solid #e3e3e3;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
-
 .product-title {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   color: #333;
+
+  @media (min-width: 768px) {
+    font-size: 1.8rem;
+  }
+  .product-image {
+    max-height: 300px; /* 在小螢幕上減小圖片大小 */
+  }
+
+  .product-details {
+    padding: 0 15px;
+  }
+
+  .quantity-selector {
+    justify-content: center; /* 在小螢幕上，將數量選擇器置中 */
+  }
 }
 
 .product-subtitle {
-  font-size: 1.4rem;
+  line-height: 30px;
+  font-size: 1rem;
   color: #555;
 }
 
 .price {
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   font-weight: bold;
 }
 

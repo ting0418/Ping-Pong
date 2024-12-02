@@ -16,6 +16,7 @@
 
 
 <script>
+import emitter from "../methods/emitter";
 export default {
   data() {
     return {
@@ -23,10 +24,12 @@ export default {
       menuItems: ["全部商品", "球皮", "球鞋", "球拍", "配件"], // 這裡可以根據需求增加更多類別
     };
   },
+
   methods: {
     selectCategory(category) {
       this.selectedItem = category;
-      this.$emit("category-selected", category);
+
+      this.$emit("category-selected", this.selectedItem);
     },
   },
 };
