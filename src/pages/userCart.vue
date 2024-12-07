@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Loading :active="isLoading" loader="bars" color="#e9e9d7"></Loading>
-    <h2 class="mt-2 text-center">購物車清單</h2>
+    <h2 class="mt-2 fw-bold text-center">購物車清單</h2>
     <hr />
     <div v-if="this.cartLists.carts.length" class="row justify-content-center">
       <div class="col-md-9">

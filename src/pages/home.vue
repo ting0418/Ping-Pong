@@ -66,7 +66,6 @@
       </div>
     </div>
   </nav>
-
   <div style="position: relative">
     <img
       src="/image/2.webp"
@@ -74,8 +73,32 @@
       class="img-fluid"
       style="width: 100%; height: auto"
     />
+    <div class="bg-white" style="width: 200px; z-index: -2"></div>
   </div>
-
+  <div class="container container-md-fluid mt-5 justify-content-center">
+    <iframe
+      class="col-md-6 col-12"
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/70ieLEQWuAo?si=uIHsptlhb1bjlRiA"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen
+    ></iframe
+    ><iframe
+      class="col-md-6 col-12"
+      width="560"
+      height="315"
+      src="https://www.youtube.com/embed/AUKseX5LQ4Q?si=2jhFWcU05LjkrrEJ"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen
+    ></iframe>
+  </div>
   <div class="container container-md-fluid position-relative mt-5">
     <div class="my-5">
       <h3 class="fw-bold text-center">商品介紹</h3>
@@ -94,9 +117,10 @@
         </div>
       </div>
     </div>
+
     <hr />
     <div class="my-5">
-      <h3 class="fw-bold text-center">精選商品</h3>
+      <h3 class="fw-bold text-center">店家精選商品</h3>
 
       <!-- Swiper  -->
       <div class="swiper">
@@ -128,7 +152,7 @@
                 <div class="d-flex align-items-center justify-content-between">
                   <h5 class="card-text text-danger">$NT{{ product.price }}</h5>
                   <button
-                    class="btn bg-secondary"
+                    class="btn bg-secondary text-white"
                     @click="goProductDetail(product.id)"
                   >
                     查看商品
@@ -184,6 +208,7 @@
             v-model="email"
             type="email"
             class="form-control"
+            :class="{ 'is-invalid': email && !validateEmail(email) }"
             placeholder="請輸入您的Email"
           />
           <button @click="getCoupon()" class="btn btn-dark">訂閱</button>
@@ -345,20 +370,20 @@ export default {
 .nav-bg {
   background: #4d453e;
 }
-
 .navbar-nav .nav-link {
-  font-size: 1.25rem; /* 預設字體大小 */
+  font-family: "Poppins", sans-serif; /* 現代字型 */
+  font-size: 1.25rem;
   transition: color 0.3s;
 }
 
 /* 懸停效果 - 顯示底線並更改顏色 */
 .navbar-nav .nav-link:hover {
-  color: #e9e9d7; /* 滑鼠懸停變色 */
+  color: #20adb5; /* 滑鼠懸停變色 */
   text-decoration: underline;
-  text-decoration-color: #e9e9d7;
+
   text-underline-offset: 5px;
   transform: translateY(-3px);
-  transition: 0.5s;
+  transition: 1.5s;
 }
 
 /* 點擊效果 - 增加縮小效果 */
@@ -405,6 +430,9 @@ export default {
 }
 .favorite-btn:hover {
   background-color: rgba(255, 255, 255, 1);
+}
+.is-invalid {
+  border-color: red;
 }
 .swiper {
   width: 100%;
