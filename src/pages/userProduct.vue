@@ -11,61 +11,68 @@
       </button>
     </div>
 
-    <div class="row justify-content-center">
-      <Category class="col-md-2" @category-selected="filterByCategory" />
-      <div class="col-10 mt-4">
-        <div class="row">
-          <div
-            class="col-12 col-md-6 col-lg-4 mb-4"
-            v-for="item in paginatedProducts"
-            :key="item.id"
-          >
-            <div class="card mx-2" style="width: 100%; height: auto">
-              <button class="border border-0" @click="getProduct(item.id)">
-                <img
-                  :src="item.imageUrl"
-                  class="card-img-top"
-                  alt="Product Image"
-                />
-              </button>
+    <div class="container">
+      <div class="row justify-content-center">
+        <Category class="col-md-2" @category-selected="filterByCategory" />
+        <div class="col-10 mt-4">
+          <div class="row">
+            <div
+              class="col-12 col-md-6 col-lg-4 mb-4"
+              v-for="item in paginatedProducts"
+              :key="item.id"
+            >
+              <div class="card mx-2" style="width: 100%; height: auto">
+                <button class="border border-0" @click="getProduct(item.id)">
+                  <img
+                    :src="item.imageUrl"
+                    class="card-img-top"
+                    alt="Product Image"
+                  />
+                </button>
 
-              <div class="card-body">
-                <h5 class="card-title fw-bolder">{{ item.title }}</h5>
-                <span class="border border-warning rounded-3 px-1">{{
-                  item.category
-                }}</span>
+                <div class="card-body">
+                  <h5 class="card-title fw-bolder">{{ item.title }}</h5>
+                  <span class="border border-warning rounded-3 px-1">{{
+                    item.category
+                  }}</span>
 
-                <div class="d-flex justify-content-around my-3">
-                  <button class="btn custom-button bg-light rounded-3">
-                    <i class="bi bi-cart fs-3" @click="addToCart(item.id)"></i>
-                  </button>
-                  <button
-                    class="btn bg-light rounded-3"
-                    @click="toggleFavorite(item)"
+                  <div class="d-flex justify-content-around my-3">
+                    <button class="btn custom-button bg-light rounded-3">
+                      <i
+                        class="bi bi-cart fs-3"
+                        @click="addToCart(item.id)"
+                      ></i>
+                    </button>
+                    <button
+                      class="btn bg-light rounded-3"
+                      @click="toggleFavorite(item)"
+                    >
+                      <i
+                        v-if="!item.isFavorite"
+                        class="bi bi-heart fs-3 cursor-pointer"
+                      ></i>
+                      <i
+                        v-else
+                        class="bi bi-suit-heart-fill fs-3 text-danger"
+                      ></i>
+                    </button>
+                  </div>
+
+                  <h5 v-if="item.origin_price > item.price" class="text-dark">
+                    <del>$NT{{ item.origin_price }}</del>
+                  </h5>
+
+                  <div
+                    class="d-flex align-items-center justify-content-between"
                   >
-                    <i
-                      v-if="!item.isFavorite"
-                      class="bi bi-heart fs-3 cursor-pointer"
-                    ></i>
-                    <i
-                      v-else
-                      class="bi bi-suit-heart-fill fs-3 text-danger"
-                    ></i>
-                  </button>
-                </div>
-
-                <h5 v-if="item.origin_price > item.price" class="text-dark">
-                  <del>$NT{{ item.origin_price }}</del>
-                </h5>
-
-                <div class="d-flex align-items-center justify-content-between">
-                  <h5 class="text-danger">$NT{{ item.price }}</h5>
-                  <button
-                    class="btn btn-outline-dark"
-                    @click="getProduct(item.id)"
-                  >
-                    更多資訊
-                  </button>
+                    <h5 class="text-danger">$NT{{ item.price }}</h5>
+                    <button
+                      class="btn btn-outline-dark"
+                      @click="getProduct(item.id)"
+                    >
+                      更多資訊
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -244,5 +251,10 @@ export default {
   padding: 5px;
   font-size: 1.2rem;
   cursor: pointer;
+}
+.card:hover {
+  /* 放大 */
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
 }
 </style>

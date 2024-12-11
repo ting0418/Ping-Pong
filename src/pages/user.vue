@@ -32,14 +32,7 @@
               >首頁</router-link
             >
           </li>
-          <li class="nav-item">
-            <router-link
-              class="nav-link text-white d-flex justify-content-center"
-              aria-current="page"
-              to="/user/cart"
-              >購物車</router-link
-            >
-          </li>
+
           <li class="nav-item">
             <router-link
               class="nav-link text-white d-flex justify-content-center"
@@ -60,6 +53,14 @@
               class="nav-link text-white d-flex justify-content-center"
               to="/user/about"
               >關於我們</router-link
+            >
+          </li>
+          <li class="nav-item">
+            <router-link
+              class="nav-link text-white d-flex justify-content-center"
+              aria-current="page"
+              to="/user/cart"
+              >購物車</router-link
             >
           </li>
         </ul>
@@ -95,7 +96,7 @@ export default {
 }
 
 .navbar-nav .nav-link {
-  font-size: 1.25rem; /* 預設字體大小 */
+  font-size: 1rem; /* 預設字體大小 */
   transition: color 0.3s;
 }
 
@@ -111,7 +112,7 @@ export default {
 
 /* 點擊效果 - 增加縮小效果 */
 .navbar-nav .nav-link:active {
-  transform: scale(0.95); /* 按下時縮小 */
+  transform: scale(1.2); /* 按下時縮小 */
   color: #d3d3d3; /* 點擊時顏色變化 */
 }
 .router-link-active {

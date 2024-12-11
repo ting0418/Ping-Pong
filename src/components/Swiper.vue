@@ -2,17 +2,13 @@
   <div class="swiper">
     <div class="swiper-wrapper">
       <div class="swiper-slide">
-        <img src="../../public/image/1.jpg" alt="" />
-      </div>
-      <div class="swiper-slide">
         <img src="../../public/image/2.webp" alt="" />
       </div>
       <div class="swiper-slide">
         <img src="../../public/image/3.jpg" alt="" />
       </div>
-      <!-- Add more slides as needed -->
     </div>
-    <!-- Add Pagination and Navigation -->
+
     <div class="swiper-pagination"></div>
     <div class="swiper-button-next"></div>
     <div class="swiper-button-prev"></div>
@@ -25,7 +21,6 @@ import "swiper/css/bundle";
 
 export default {
   mounted() {
-    // Initialize Swiper after the component is mounted
     new Swiper(".swiper", {
       speed: 400,
       spaceBetween: 100,
@@ -39,7 +34,7 @@ export default {
       },
       loop: true,
       autoplay: {
-        delay: 3000, // 自動切換的間隔時間（以毫秒為單位）
+        delay: 3000,
         disableOnInteraction: false, // 設定為 false 以便在手動操作後也能繼續自動輪播
       },
     });

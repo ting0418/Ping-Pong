@@ -1,5 +1,5 @@
 import { createApp } from "vue";
-import "./style.css";
+import "swiper/swiper-bundle.css";
 import App from "./App.vue";
 import router from "./router";
 import Loading from "vue3-loading-overlay";
@@ -11,9 +11,12 @@ import { currency, date } from "../src/methods/filters";
 import "animate.css";
 import "bootstrap";
 import messageState from "./methods/messageState";
-
+import "./style.css";
 import { Field, Form, ErrorMessage, defineRule, configure } from "vee-validate";
+import "aos/dist/aos.css"; // 引入 AOS 的 CSS 文件
+import AOS from "aos"; // 引入 AOS
 import { required, email, min } from "@vee-validate/rules";
+import { once } from "process";
 defineRule("required", required);
 defineRule("email", email);
 defineRule("min", min);
@@ -34,9 +37,15 @@ app.config.globalProperties.$filters = { date, currency };
 app.config.globalProperties.$messageState = messageState;
 app.use(VueAxios, axios);
 app.use(router);
+
 app.component("VForm", Form);
 app.component("VField", Field);
 app.component("ErrorMessage", ErrorMessage);
 
 app.component("Loading", Loading);
 app.mount("#app");
+AOS.init({
+  duration: 2000, // 動畫持續時間（毫秒）
+  offset: 200,
+  once: true,
+});

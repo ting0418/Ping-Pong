@@ -6,8 +6,8 @@
         class="navbar-brand text-decoration-none animate__backInUp animate__animated"
         aria-current="page"
         to="/"
-        >Ping Pong</router-link
-      >
+        >Ping Pong
+      </router-link>
 
       <button
         class="navbar-toggler"
@@ -26,30 +26,23 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
             <router-link
-              class="nav-link text-white d-flex justify-content-center"
+              class="nav-link d-flex justify-content-center"
               aria-current="page"
               to="/"
               >首頁</router-link
             >
           </li>
+
           <li class="nav-item">
             <router-link
-              class="nav-link text-white d-flex justify-content-center"
-              aria-current="page"
-              to="/user/cart"
-              >購物車</router-link
-            >
-          </li>
-          <li class="nav-item">
-            <router-link
-              class="nav-link text-white d-flex justify-content-center"
+              class="nav-link d-flex justify-content-center"
               to="/user/product"
               >商品頁面</router-link
             >
           </li>
           <li class="nav-item">
             <router-link
-              class="nav-link text-white d-flex justify-content-center"
+              class="nav-link d-flex justify-content-center"
               aria-current="page"
               to="/user/myFavorite"
               >我的最愛</router-link
@@ -57,69 +50,117 @@
           </li>
           <li class="nav-item">
             <router-link
-              class="nav-link text-white d-flex justify-content-center"
+              class="nav-link d-flex justify-content-center"
               to="/user/about"
               >關於我們</router-link
+            >
+          </li>
+          <li class="nav-item">
+            <router-link
+              class="nav-link d-flex justify-content-center"
+              aria-current="page"
+              to="/user/cart"
+              >購物車</router-link
             >
           </li>
         </ul>
       </div>
     </div>
   </nav>
-  <div style="position: relative">
-    <img
-      src="/image/2.webp"
-      alt=""
-      class="img-fluid"
-      style="width: 100%; height: auto"
-    />
-    <div class="bg-white" style="width: 200px; z-index: -2"></div>
+  <HomeSwiper data-aos="fade-down"></HomeSwiper>
+  <div class="bg-white p-5">
+    <div class="container">
+      <div
+        class="d-flex flex-column flex-md-row justify-content-between align-items-md-center align-items-start"
+      >
+        <p class="mb-0 me-2 fw-bold">立即訂閱就可以領取新客8折優惠!</p>
+        <div class="input-group w-md-50 mt-md-0 mt-3">
+          <input
+            v-model="email"
+            type="email"
+            class="form-control"
+            :class="{ 'is-invalid': email && !validateEmail(email) }"
+            placeholder="請輸入您的Email"
+          />
+          <button @click="getCoupon()" class="btn btn-dark">訂閱</button>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="container container-md-fluid mt-5 justify-content-center">
-    <iframe
-      class="col-md-6 col-12"
-      width="560"
-      height="315"
-      src="https://www.youtube.com/embed/70ieLEQWuAo?si=uIHsptlhb1bjlRiA"
-      title="YouTube video player"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      referrerpolicy="strict-origin-when-cross-origin"
-      allowfullscreen
-    ></iframe
-    ><iframe
-      class="col-md-6 col-12"
-      width="560"
-      height="315"
-      src="https://www.youtube.com/embed/AUKseX5LQ4Q?si=2jhFWcU05LjkrrEJ"
-      title="YouTube video player"
-      frameborder="0"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      referrerpolicy="strict-origin-when-cross-origin"
-      allowfullscreen
-    ></iframe>
+  <div
+    data-aos="fade-right"
+    class="container container-md-fluid mt-5 justify-content-center"
+  >
+    <h2 class="my-3 text-center fw-bold">如何挑選球拍?</h2>
+    <div>
+      <iframe
+        class="col-lg-6 col-12"
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/70ieLEQWuAo?si=uIHsptlhb1bjlRiA"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe
+      ><iframe
+        class="col-lg-6 col-12"
+        width="560"
+        height="315"
+        src="https://www.youtube.com/embed/AUKseX5LQ4Q?si=2jhFWcU05LjkrrEJ"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen
+      ></iframe>
+    </div>
   </div>
-  <div class="container container-md-fluid position-relative mt-5">
-    <div class="my-5">
-      <h3 class="fw-bold text-center">商品介紹</h3>
+  <hr />
+  <div
+    data-aos="fade-left"
+    class="container container-md-fluid position-relative mt-5"
+  >
+    <div class="row">
+      <div
+        class="col-lg-6 col-12 my-5 align-items-center align-items-lg-start d-flex flex-column justify-content-center align-items-start"
+      >
+        <h3 class="fw-bold">想找甚麼裝備嗎?</h3>
+        <button @click="goProduct()" class="btn btn-outline-secondary mt-3">
+          所有商品
+        </button>
+      </div>
 
-      <div class="row justify-content-center justify-content-md-between">
-        <!-- 商品卡片 -->
-        <div
-          v-for="(category, index) in categories"
-          :key="index"
-          class="card col-8 col-md-3 mb-4"
-        >
-          <button class="btn" @click="goProduct(category.title)">
-            <img :src="category.image" alt="" class="img-fluid" />
-          </button>
-          <h4 class="fw-bold text-center my-3">{{ category.title }}</h4>
+      <div class="col-lg-6 col-12">
+        <div class="row">
+          <div
+            v-for="(category, index) in categories"
+            :key="index"
+            class="col-lg-6 col-12 mb-4 test"
+          >
+            <div class="d-flex d-lg-block justify-content-around">
+              <button
+                class="btn p-0 category"
+                @click="goProduct(category.title)"
+              >
+                <img
+                  :src="category.image"
+                  alt=""
+                  class="img-fluid img-category"
+                />
+              </button>
+              <h4 class="fw-bold d-flex align-items-center text-center my-3">
+                | {{ category.title }}
+              </h4>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
     <hr />
-    <div class="my-5">
+    <div data-aos="zoom-in" class="my-5">
       <h3 class="fw-bold text-center">店家精選商品</h3>
 
       <!-- Swiper  -->
@@ -197,25 +238,6 @@
       </div>
     </div>
   </div>
-  <div class="bg-light p-5 mt-5">
-    <div class="container">
-      <div
-        class="d-flex flex-column flex-md-row justify-content-between align-items-md-center align-items-start"
-      >
-        <p class="mb-0 me-2 fw-bold">立即訂閱就可以領取新客8折優惠!</p>
-        <div class="input-group w-md-50 mt-md-0 mt-3">
-          <input
-            v-model="email"
-            type="email"
-            class="form-control"
-            :class="{ 'is-invalid': email && !validateEmail(email) }"
-            placeholder="請輸入您的Email"
-          />
-          <button @click="getCoupon()" class="btn btn-dark">訂閱</button>
-        </div>
-      </div>
-    </div>
-  </div>
 </template>
 
 <script>
@@ -224,7 +246,12 @@ import Swal from "sweetalert2";
 import Swiper from "swiper/bundle";
 import "swiper/swiper-bundle.css";
 import emitter from "../methods/emitter";
+import HomeSwiper from "../components/HomeSwiper.vue";
+
 export default {
+  components: {
+    HomeSwiper,
+  },
   data() {
     return {
       isLoading: false,
@@ -233,7 +260,7 @@ export default {
       allProducts: [],
       categories: [
         { title: "球拍", image: "image/fzd.jpg" },
-        { title: "球皮", image: "image/05.jpg" },
+        { title: "球皮", image: "image/rozena.jpg" },
         { title: "球鞋", image: "image/shoe.jpeg" },
         { title: "配件", image: "image/head band.jpg" },
       ],
@@ -350,16 +377,24 @@ export default {
         el: ".swiper-pagination",
         clickable: true,
       },
-      loop: true,
-      autoplay: {
-        delay: 3000,
-        disableOnInteraction: false,
-      },
+
       breakpoints: {
         1600: { slidesPerView: 4 },
         1200: { slidesPerView: 3 },
         768: { slidesPerView: 2 },
         390: { slidesPerView: 1 },
+      },
+    });
+    new Swiper(".swiper-main", {
+      slidesPerView: 1,
+
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
       },
     });
   },
@@ -371,42 +406,57 @@ export default {
   background: #4d453e;
 }
 .navbar-nav .nav-link {
-  font-family: "Poppins", sans-serif; /* 現代字型 */
-  font-size: 1.25rem;
+  font-size: 1rem;
   transition: color 0.3s;
+  color: #e9e9d7;
 }
 
-/* 懸停效果 - 顯示底線並更改顏色 */
 .navbar-nav .nav-link:hover {
-  color: #20adb5; /* 滑鼠懸停變色 */
   text-decoration: underline;
-
   text-underline-offset: 5px;
   transform: translateY(-3px);
-  transition: 1.5s;
+  transition: 1s;
+  color: rgb(17, 179, 163);
 }
 
 /* 點擊效果 - 增加縮小效果 */
 .navbar-nav .nav-link:active {
-  transform: scale(0.95); /* 按下時縮小 */
-  color: #d3d3d3; /* 點擊時顏色變化 */
+  transform: scale(1.2); /* 按下時縮小 */
 }
 .router-link-active {
   text-decoration: underline;
   text-decoration-color: #e9e9d7;
   text-underline-offset: 3px;
 }
-
+.full-width-img {
+  width: 100%;
+  height: auto;
+}
+.category:hover {
+  transform: translateY(7px);
+  transition: transform 0.5s linear;
+}
 @media (max-width: 992px) {
   .navbar-nav .nav-link {
     font-size: 1rem;
+  }
+  .img-category {
+    width: 200px;
+  }
+  .test:hover {
+    background: #f9d0b6da;
+    transform: translateX(10px);
+    transition: 2s;
+  }
+  .category:hover {
+    transform: none;
+    transition: none;
   }
 }
 .swiper-slide {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10px;
 }
 .swiper-pagination {
   bottom: -5px;
@@ -418,6 +468,7 @@ export default {
 .card:hover {
   transform: translateY(-5px);
 }
+
 .favorite-btn {
   position: absolute;
   top: 0px;
@@ -439,6 +490,7 @@ export default {
   max-width: 100%;
   margin: auto;
 }
+
 .swiper-slide img {
   width: 100%;
   height: auto;
