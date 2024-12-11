@@ -4,7 +4,7 @@
 
 使用技術:vue3框架,vite建立專案,Bootstrap 5 排版並製作RWD網頁  
 
-使用套件:vee-validate,axios,sweetalert,bootstrap-icons,vue3-loading-overlay,swiper  　　
+使用套件:vee-validate,axios,sweetalert,bootstrap-icons,vue3-loading-overlay,swiper,aos  
 
 ## 主要功能　
 
