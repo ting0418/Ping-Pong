@@ -1,7 +1,7 @@
 
   <template>
   <div>
-    <Loading :active="isLoading"></Loading>
+    <Loading :active="isLoading" loader="bars" color="#e9e9d7"></Loading>
     <div class="text-end mt-4">
       <button class="btn btn-primary" @click.prevent="openCouponModal(true)">
         建立新的優惠券

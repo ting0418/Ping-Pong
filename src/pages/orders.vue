@@ -1,5 +1,5 @@
 <template>
-  <Loading :active="isLoading"></Loading>
+  <Loading :active="isLoading" loader="bars" color="#e9e9d7"></Loading>
   <table class="table mt-4 table-success">
     <thead>
       <tr>

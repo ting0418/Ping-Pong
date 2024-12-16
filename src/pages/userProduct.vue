@@ -13,7 +13,12 @@
 
     <div class="container">
       <div class="row justify-content-center">
-        <Category class="col-md-2" @category-selected="filterByCategory" />
+        <Category
+          class="col-md-2"
+          :selectedCategory="category"
+          @category-selected="filterByCategory"
+        />
+
         <div class="col-10 mt-4">
           <div class="row">
             <div
@@ -172,9 +177,15 @@ export default {
             ...item,
             isFavorite: favorites.includes(item.id),
           }));
-
           this.filteredProductList = this.productList;
           this.isLoading = false;
+
+          // 等資料載入完成後再過濾
+          const categoryFromQuery = this.$route.query.category;
+          if (categoryFromQuery) {
+            this.filterByCategory(categoryFromQuery);
+          }
+
           this.updateTotalPages();
         })
         .catch((error) => {
@@ -182,6 +193,7 @@ export default {
           this.isLoading = false;
         });
     },
+
     getProduct(id) {
       this.$router.push(`/user/product/${id}`);
     },
@@ -228,9 +240,17 @@ export default {
     filteredProductList() {
       this.updateTotalPages();
     },
+    "$route.query.category"(newCategory) {
+      this.filterByCategory(newCategory || "全部商品");
+    },
   },
   created() {
     this.getProductList();
+    const categoryFromQuery = this.$route.query.category;
+
+    if (categoryFromQuery) {
+      this.filterByCategory(categoryFromQuery);
+    }
   },
 };
 </script>

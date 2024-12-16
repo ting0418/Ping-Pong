@@ -1,5 +1,5 @@
 <template>
-  <Loading :active="isLoading"></Loading>
+  <Loading :active="isLoading" loader="bars" color="#e9e9d7"></Loading>
   <div class="text-end">
     <button class="btn btn-primary" type="button" @click="openModal(true)">
       新增產品

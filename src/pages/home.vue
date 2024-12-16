@@ -3,7 +3,7 @@
   <nav class="px-5 navbar navbar-expand-lg navbar-light nav-bg">
     <div class="container-fluid">
       <router-link
-        class="navbar-brand text-decoration-none animate__backInUp animate__animated"
+        class="navbar-brand text-decoration-none animate__backInUp animate__animated logo"
         aria-current="page"
         to="/"
         >Ping Pong
@@ -307,8 +307,10 @@ export default {
       }
     },
     goProduct(categoryTitle) {
-      emitter.emit("updateCategory", categoryTitle);
-      this.$router.push("/user/product");
+      this.$router.push({
+        path: "/user/product",
+        query: { category: categoryTitle },
+      });
     },
     goProductDetail(id) {
       this.$router.push(`/user/product/${id}`);
@@ -402,6 +404,9 @@ export default {
 </script>
 
 <style scoped>
+.logo {
+  font-family: Playball, cursive !important;
+}
 .nav-bg {
   background: #4d453e;
 }

@@ -35,7 +35,7 @@
           <thead>
             <th>品名</th>
             <th>數量</th>
-            <th>價格</th>
+            <th class="text-end">價格</th>
           </thead>
           <tbody>
             <tr v-for="item in orderList.products" :key="item.id">
@@ -118,12 +118,11 @@ export default {
         import.meta.env.VITE_PATH
       }/order/${this.orderId}`;
       axios.get(api).then((res) => {
-        console.log(res);
         if (res.data.success) {
           this.orderList = res.data.order;
         }
 
-        console.log(this.orderList);
+        // console.log(this.orderList);
       });
     },
     payOrder() {

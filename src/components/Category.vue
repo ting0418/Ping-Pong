@@ -16,12 +16,17 @@
 
 
 <script>
-import emitter from "../methods/emitter";
 export default {
+  props: {
+    selectedCategory: {
+      type: String,
+      default: "全部商品",
+    },
+  },
   data() {
     return {
-      selectedItem: "全部商品",
-      menuItems: ["全部商品", "球皮", "球鞋", "球拍", "配件"], // 這裡可以根據需求增加更多類別
+      selectedItem: this.selectedCategory || "全部商品",
+      menuItems: ["全部商品", "球皮", "球鞋", "球拍", "配件"],
     };
   },
 

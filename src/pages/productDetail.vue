@@ -1,11 +1,8 @@
 <template>
   <Loading :active="isLoading" loader="bars" color="#e9e9d7"></Loading>
+
   <div class="container mt-5 d-flex justify-content-center">
     <div class="d-flex flex-column flex-md-row">
-      <Image
-        width="{200}"
-        src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-      />
       <img :src="product.imageUrl" class="product-image me-5" alt="商品圖片" />
       <div class="product-details ms-md-2 mt-3 mt-md-0">
         <h1 class="product-title mb-3 fw-bold">
@@ -97,9 +94,9 @@
 </template>
 
 <script>
-import { Image } from "antd";
 import Swal from "sweetalert2";
 import axios from "axios";
+
 export default {
   data() {
     return {
