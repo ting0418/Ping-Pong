@@ -41,27 +41,27 @@ export default {
 .footer-back {
   height: 220px;
   background: #e9e9d7;
-  position: relative; /* 相對定位以便將按鈕定位到右下角 */
+  position: relative;
 }
 
 .back-to-top {
-  position: fixed; /* 固定定位 */
-  bottom: 20px; /* 距離底部的距離 */
-  right: 20px; /* 距離右側的距離 */
-  background-color: #e9e9d7; /* 背景顏色 */
-  border: none; /* 去掉邊框 */
-  border-radius: 50%; /* 圓形 */
-  width: 50px; /* 寬度 */
-  height: 50px; /* 高度 */
-  display: flex; /* 使用 flex 排版 */
-  justify-content: center; /* 置中對齊 */
-  align-items: center; /* 置中對齊 */
-  cursor: pointer; /* 游標樣式 */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); /* 添加陰影 */
-  transition: background-color 0.3s; /* 添加過渡效果 */
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #e9e9d7;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s;
 }
 
 .back-to-top:hover {
-  background-color: #d8d8d8; /* 滑鼠懸停時改變背景顏色 */
+  background-color: #d8d8d8;
 }
 </style>

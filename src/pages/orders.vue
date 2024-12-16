@@ -1,5 +1,5 @@
 <template>
-  <Loading :active="isLoading" loader="bars" color="#e9e9d7"></Loading>
+  <Loading :active="isLoading"></Loading>
   <table class="table mt-4 table-success">
     <thead>
       <tr>
@@ -24,7 +24,7 @@
               </li>
             </ul>
           </td>
-          <td class="text-right">{{ item.total }}</td>
+          <td class="text-right">{{ $filters.currency(item.total) }}</td>
           <td>
             <div class="form-check form-switch">
               <input

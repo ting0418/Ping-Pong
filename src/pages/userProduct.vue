@@ -64,13 +64,15 @@
                   </div>
 
                   <h5 v-if="item.origin_price > item.price" class="text-dark">
-                    <del>$NT{{ item.origin_price }}</del>
+                    <del>$NT{{ $filters.currency(item.origin_price) }}</del>
                   </h5>
 
                   <div
                     class="d-flex align-items-center justify-content-between"
                   >
-                    <h5 class="text-danger">$NT{{ item.price }}</h5>
+                    <h5 class="text-danger">
+                      $NT{{ $filters.currency(item.price) }}
+                    </h5>
                     <button
                       class="btn btn-outline-dark"
                       @click="getProduct(item.id)"

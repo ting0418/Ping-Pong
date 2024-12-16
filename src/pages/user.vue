@@ -26,7 +26,7 @@
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
             <router-link
-              class="nav-link text-white d-flex justify-content-center"
+              class="nav-link d-flex justify-content-center"
               aria-current="page"
               to="/"
               >首頁</router-link
@@ -35,14 +35,14 @@
 
           <li class="nav-item">
             <router-link
-              class="nav-link text-white d-flex justify-content-center"
+              class="nav-link d-flex justify-content-center"
               to="/user/product"
               >商品頁面</router-link
             >
           </li>
           <li class="nav-item">
             <router-link
-              class="nav-link text-white d-flex justify-content-center"
+              class="nav-link d-flex justify-content-center"
               aria-current="page"
               to="/user/myFavorite"
               >我的最愛</router-link
@@ -50,14 +50,14 @@
           </li>
           <li class="nav-item">
             <router-link
-              class="nav-link text-white d-flex justify-content-center"
+              class="nav-link d-flex justify-content-center"
               to="/user/about"
               >關於我們</router-link
             >
           </li>
           <li class="nav-item">
             <router-link
-              class="nav-link text-white d-flex justify-content-center"
+              class="nav-link d-flex justify-content-center"
               aria-current="page"
               to="/user/cart"
               >購物車</router-link
@@ -94,15 +94,15 @@ export default {
 .nav-bg {
   background: #4d453e;
 }
-
 .navbar-nav .nav-link {
-  font-size: 1rem; /* 預設字體大小 */
+  font-size: 1rem;
   transition: color 0.3s;
+  color: #e9e9d7;
 }
 
 /* 懸停效果 - 顯示底線並更改顏色 */
 .navbar-nav .nav-link:hover {
-  color: #e9e9d7; /* 滑鼠懸停變色 */
+  color: rgb(17, 179, 163);
   text-decoration: underline;
   text-decoration-color: #e9e9d7;
   text-underline-offset: 5px;

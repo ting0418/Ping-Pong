@@ -191,7 +191,9 @@
               <div class="card-body">
                 <h5 class="card-title text-center">{{ product.title }}</h5>
                 <div class="d-flex align-items-center justify-content-between">
-                  <h5 class="card-text text-danger">$NT{{ product.price }}</h5>
+                  <h5 class="card-text text-danger">
+                    $NT{{ $filters.currency(product.price) }}
+                  </h5>
                   <button
                     class="btn bg-secondary text-white"
                     @click="goProductDetail(product.id)"
@@ -244,8 +246,7 @@
 import axios from "axios";
 import Swal from "sweetalert2";
 import Swiper from "swiper/bundle";
-import "swiper/swiper-bundle.css";
-import emitter from "../methods/emitter";
+
 import HomeSwiper from "../components/HomeSwiper.vue";
 
 export default {
@@ -257,7 +258,7 @@ export default {
       isLoading: false,
       email: "",
       status: { LoadingItem: "" },
-      allProducts: [],
+      products: [],
       categories: [
         { title: "球拍", image: "image/fzd.jpg" },
         { title: "球皮", image: "image/rozena.jpg" },
@@ -271,7 +272,7 @@ export default {
           image: "image/user1.jpg",
         },
         {
-          name: "Jason",
+          name: "Mary",
           comment: "老闆介紹得非常清楚，對於新手也難準確提供建議",
           image: "image/user2.jpg",
         },
@@ -289,22 +290,25 @@ export default {
     };
   },
   methods: {
-    async fetchProducts() {
-      try {
-        this.isLoading = true;
-        const api = `${import.meta.env.VITE_API}api/${
-          import.meta.env.VITE_PATH
-        }/products/all`;
-        const response = await axios.get(api);
-        const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-        this.allProducts = response.data.products.map((product) => ({
-          ...product,
-          isFavorite: favorites.includes(product.id),
-        }));
-        this.isLoading = false;
-      } catch (error) {
-        console.error("無法獲取產品資料", error);
-      }
+    fetchProducts() {
+      this.isLoading = true;
+      const api = `${import.meta.env.VITE_API}api/${
+        import.meta.env.VITE_PATH
+      }/products/all`;
+
+      axios
+        .get(api)
+        .then((response) => {
+          const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+          this.products = response.data.products.map((product) => ({
+            ...product,
+            isFavorite: favorites.includes(product.id),
+          }));
+          this.isLoading = false;
+        })
+        .catch((error) => {
+          console.error("無法獲取產品資料", error);
+        });
     },
     goProduct(categoryTitle) {
       this.$router.push({
@@ -358,7 +362,7 @@ export default {
   },
   computed: {
     displayedProducts() {
-      return this.allProducts
+      return this.products
         .slice()
         .sort(() => 0.5 - Math.random())
         .slice(0, 6);

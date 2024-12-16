@@ -75,12 +75,12 @@
             </td>
             <td class="bg-color">
               <p class="d-flex justify-content-start">
-                $NT{{ item.product.price }}
+                $NT{{ $filters.currency(item.product.price) }}
               </p>
             </td>
             <td class="bg-color">
               <p class="justify-content-center align-items-center">
-                {{ item.product.price * item.qty }}
+                {{ $filters.currency(item.product.price * item.qty) }}
               </p>
             </td>
             <td class="bg-color">
@@ -98,7 +98,7 @@
       </router-link>
     </div>
     <h5 v-if="this.cartLists.carts.length" class="text-end">
-      總計:{{ totalAmount }}
+      總計:{{ $filters.currency(totalAmount) }}
     </h5>
     <hr v-if="this.cartLists.carts.length" />
     <h5 class="text-end text-success" v-if="this.finalTotal">

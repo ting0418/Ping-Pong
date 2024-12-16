@@ -21,9 +21,11 @@
             v-if="product.origin_price > product.price"
             class="price mb-4 me-3"
           >
-            <del>NT$:{{ product.origin_price }}</del>
+            <del>NT$:{{ $filters.currency(product.origin_price) }}</del>
           </h5>
-          <h5 class="price text-danger mb-4">NT$:{{ product.price }}</h5>
+          <h5 class="price text-danger mb-4">
+            NT$:{{ $filters.currency(product.price) }}
+          </h5>
         </div>
 
         <div class="quantity-selector d-flex align-items-center">
@@ -91,12 +93,13 @@
       </li>
     </ol>
   </div>
+  <ProductSwiper />
 </template>
 
 <script>
 import Swal from "sweetalert2";
 import axios from "axios";
-
+import ProductSwiper from "../components/ProductSwiper.vue";
 export default {
   data() {
     return {
@@ -107,6 +110,14 @@ export default {
       cartAdded: false,
     };
   },
+  components: {
+    ProductSwiper,
+  },
+  watch: {
+    "$route.params.ProductId"(newVal) {
+      this.getProductDetail(newVal);
+    },
+  },
 
   methods: {
     increase() {
@@ -116,6 +127,19 @@ export default {
       if (this.quantity > 1) {
         this.quantity--;
       }
+    },
+    getProductDetail() {
+      const id = this.$route.params.ProductId;
+
+      const api = `${import.meta.env.VITE_API}api/${
+        import.meta.env.VITE_PATH
+      }/product/${id}`;
+      axios.get(api).then((res) => {
+        this.isLoading = false;
+        this.product = res.data.product;
+        this.newContent = this.product.content.split(",");
+        console.log(this.newContent);
+      });
     },
     addToCart(id) {
       const api = `${import.meta.env.VITE_API}api/${
@@ -141,17 +165,7 @@ export default {
 
   mounted() {
     this.isLoading = true;
-    const id = this.$route.params.ProductId;
-
-    const api = `${import.meta.env.VITE_API}api/${
-      import.meta.env.VITE_PATH
-    }/product/${id}`;
-    axios.get(api).then((res) => {
-      this.isLoading = false;
-      this.product = res.data.product;
-      this.newContent = this.product.content.split(",");
-      console.log(this.newContent);
-    });
+    this.getProductDetail();
   },
 };
 </script>
