@@ -31,13 +31,14 @@ import App from "./App.vue";
 import router from "./router";
 // 配置錯誤訊息
 configure({
+  // 設定是否在使用者輸入時進行即時驗證
   validateOnInput: true,
-  generateMessage: (ctx) => {
+  generateMessage: (msg) => {
     const messages = {
-      required: `${ctx.field} 為必填項目`,
-      email: `${ctx.field} 必須是有效的電子郵件地址`,
+      required: `${msg.field} 為必填項目`,
+      email: `${msg.field} 必須是有效的電子郵件地址`,
     };
-    return messages[ctx.rule.name] || `此項目無效`;
+    return messages[msg.rule.name] || `此項目無效`;
   },
 });
 const app = createApp(App);

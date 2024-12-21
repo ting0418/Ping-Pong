@@ -238,7 +238,7 @@ export default {
         })
         .then((res) => {
           console.log(res);
-          this.cartLists = { carts: [] };
+          this.cartLists = [];
           this.user = {
             name: "",
             email: "",
@@ -269,15 +269,16 @@ export default {
         import.meta.env.VITE_PATH
       }/cart/${item.id}`;
       this.isLoading = true;
-      this.status.loadingItem = item.id;
+      this.status.LoadingItem = item.id;
       const cart = { product_id: item.product_id, qty: item.qty };
       axios.put(api, { data: cart }).then((res) => {
         console.log(res);
         this.isLoading = false;
-        this.status.loadingItem = "";
+        this.status.LoadingItem = "";
         this.getCartList();
       });
     },
+
     getCartList() {
       const api = `${import.meta.env.VITE_API}api/${
         import.meta.env.VITE_PATH
@@ -285,9 +286,10 @@ export default {
       axios.get(api).then((res) => {
         console.log(res);
         this.cartLists = res.data.data;
-        console.log(this.cartLists.carts);
+        // console.log(this.cartLists.carts);
       });
     },
+
     deleteCart(id) {
       const api = `${import.meta.env.VITE_API}api/${
         import.meta.env.VITE_PATH
@@ -320,7 +322,6 @@ export default {
       });
     },
   },
-
   mounted() {
     this.isLoading = true;
     setTimeout(() => {
